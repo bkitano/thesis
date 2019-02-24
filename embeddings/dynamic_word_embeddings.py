@@ -24,6 +24,7 @@ lastTime = time.time()
 for batchIndex in range(1, len(batches)+1):
     
     batch = batches[batchIndex-1]
+    print(len(batch))
 
     # freq = Counter()
     for i in range(len(batch)):
@@ -31,7 +32,9 @@ for batchIndex in range(1, len(batches)+1):
         try:
             with open( textPath + filename, 'r+') as f:
                 rawtext = f.read()
+                t = time.time()
                 tokens = [t for t in nltk.word_tokenize(rawtext) if t.isalpha() and t.lower() not in english_stopwords]
+                print(time.time() - t)
                 # subfreq = nltk.FreqDist(tokens)
                 # freq += subfreq
                 
